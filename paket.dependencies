@@ -1,0 +1,12 @@
+source https://www.nuget.org/api/v2/
+
+framework: net461
+
+nuget NuGet.CommandLine
+nuget FSharp.Core >= 4.3.4 lowest_matching:true
+nuget Selenium.WebDriver
+nuget FAKE
+nuget FSharp.Formatting
+nuget FSharp.Data
+nuget Selenium.WebDriver.ChromeDriver
+nuget Selenium.WebDriver.GeckoDriver
