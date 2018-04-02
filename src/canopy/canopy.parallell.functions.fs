@@ -12,6 +12,8 @@ open canopy.types
 open canopy.finders
 open canopy.jaroWinkler
 open canopy.wait
+open System.Drawing
+open System.Drawing.Imaging
 
 (* documented/actions *)
 let firefox = Firefox
@@ -55,7 +57,7 @@ let private saveScreenshot directory filename pic =
 let private takeScreenShotIfAlertUp () =
     try
         let screenBounds = canopy.screen.getPrimaryScreenBounds ()
-        let bitmap = new Bitmap(width= screenBounds.width, height= screenBounds.height, format=PixelFormat.Format32bppArgb);
+        let bitmap = new Bitmap(width = screenBounds.width, height = screenBounds.height, format = PixelFormat.Format32bppArgb);
         use graphics = Graphics.FromImage(bitmap)
         graphics.CopyFromScreen(screenBounds.x, screenBounds.y, 0, 0, screenBounds.size, CopyPixelOperation.SourceCopy);
         use stream = new MemoryStream()

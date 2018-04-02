@@ -17,4 +17,5 @@ NUGET
       Newtonsoft.Json (>= 10.0.3)
     Selenium.WebDriver.ChromeDriver (2.37)
     Selenium.WebDriver.GeckoDriver (0.20)
+    System.Drawing.Common (4.5.0-preview1-26216-02)
     Zlib.Portable (1.11)
