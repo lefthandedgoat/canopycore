@@ -6,6 +6,10 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="2.37.0" />
+    <PackageReference Include="Selenium.WebDriver.GeckoDriver" Version="0.20.0" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\..\src\canopy.integration\canopy.integration.fsproj" />
     <ProjectReference Include="..\..\src\canopy\canopy.fsproj" />
   </ItemGroup>
