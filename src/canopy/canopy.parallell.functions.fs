@@ -8,11 +8,8 @@ open Microsoft.FSharp.Core.Printf
 open System.IO
 open System
 open canopy.configuration
-open canopy.reporters
 open canopy.types
 open canopy.finders
-open System.Drawing
-open System.Drawing.Imaging
 open canopy.jaroWinkler
 open canopy.wait
 
@@ -770,16 +767,6 @@ let pin direction (browser : IWebDriver) =
     | Right -> browser.Manage().Window.Position <- new System.Drawing.Point((maxWidth * 1), 0)
     | FullScreen -> browser.Manage().Window.Maximize()
 
-(* documented/actions *)
-let pinToMonitor n (browser : IWebDriver) =
-    let n' = if n < 1 then 1 else n
-    if canopy.screen.monitorCount >= n' then
-        let workingArea =  canopy.screen.allScreensWorkingArea.[n'-1]
-        browser.Manage().Window.Position <- new System.Drawing.Point(workingArea.X, 0)
-        browser.Manage().Window.Maximize()
-    else
-        raise(CanopyException(sprintf "Monitor %d is not detected" n))
-
 let private firefoxDriverService _ =
     let service = Firefox.FirefoxDriverService.CreateDefaultService(canopy.configuration.firefoxDriverDir)
     service.FirefoxBinaryPath <- canopy.configuration.firefoxDir
@@ -905,8 +892,8 @@ let closeTab number browser =
 
 (* documented/actions *)
 let tile (browsers : IWebDriver list) =
-    let h = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Height
-    let w = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Width
+    let h = canopy.screen.screenHeight
+    let w = canopy.screen.screenWidth
     let count = browsers.Length
     let maxWidth = w / count
 
@@ -922,8 +909,8 @@ let tile (browsers : IWebDriver list) =
 
 (* documented/actions *)
 let positionBrowser left top width height (browser : IWebDriver) =
-    let h = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Height
-    let w = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Width
+    let h = canopy.screen.screenHeight
+    let w = canopy.screen.screenWidth
 
     let x = left * w / 100
     let y = top * h / 100
