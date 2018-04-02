@@ -5,4 +5,9 @@
     <TargetFramework>netcoreapp2.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\canopy.integration\canopy.integration.fsproj" />
+    <ProjectReference Include="..\..\src\canopy\canopy.fsproj" />
+  </ItemGroup>
+  
 </Project>
