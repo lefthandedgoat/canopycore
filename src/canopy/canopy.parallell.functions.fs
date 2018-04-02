@@ -772,6 +772,7 @@ let pin direction (browser : IWebDriver) =
 let private firefoxDriverService _ =
     let service = Firefox.FirefoxDriverService.CreateDefaultService(canopy.configuration.firefoxDriverDir)
     service.FirefoxBinaryPath <- canopy.configuration.firefoxDir
+    service.HostName <- driverHostName
     service.HideCommandPromptWindow <- hideCommandPromptWindow
     service
 
@@ -784,6 +785,7 @@ let private firefoxWithUserAgent (userAgent : string) =
 
 let private chromeDriverService dir = 
     let service = Chrome.ChromeDriverService.CreateDefaultService(dir);
+    service.HostName <- driverHostName
     service.HideCommandPromptWindow <- hideCommandPromptWindow;
     service
 
@@ -794,16 +796,19 @@ let private chromeWithUserAgent dir userAgent =
 
 let private ieDriverService _ = 
     let service = IE.InternetExplorerDriverService.CreateDefaultService(ieDir)
+    service.HostName <- driverHostName
     service.HideCommandPromptWindow <- hideCommandPromptWindow
     service
 
 let private edgeDriverService _ = 
     let service = Edge.EdgeDriverService.CreateDefaultService(edgeDir)
+    service.HostName <- driverHostName
     service.HideCommandPromptWindow <- hideCommandPromptWindow
     service
 
 let private safariDriverService _ = 
     let service = Safari.SafariDriverService.CreateDefaultService(safariDir)
+    service.HostName <- driverHostName
     service.HideCommandPromptWindow <- hideCommandPromptWindow
     service
 
