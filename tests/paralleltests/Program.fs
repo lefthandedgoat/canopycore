@@ -1,8 +1,11 @@
-﻿// Learn more about F# at http://fsharp.org
+﻿open prunner
 
-open System
+let executingDir () = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location)
+canopy.configuration.chromeDir <- executingDir()
 
-[<EntryPoint>]
-let main argv =
-    printfn "Hello World from F#!"
-    0 // return an integer exit code
+functionsTests.add()
+instancedTests.add()
+
+prunner.run 3 |> ignore
+
+System.Console.ReadKey() |> ignore
