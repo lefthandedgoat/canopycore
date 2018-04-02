@@ -6,7 +6,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="jsonValidatorTests.fs" />
+    <Compile Include="loadTestTests.fs" />
+    <Compile Include="file1.fs" />
+    <Compile Include="file2.fs" />
     <Compile Include="Program.fs" />
+    <None Include="paket.references" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\canopy.integration\canopy.integration.fsproj" />
+    <ProjectReference Include="..\..\src\canopy\canopy.fsproj" />
   </ItemGroup>
 
 </Project>
